@@ -48,6 +48,10 @@ func (b *balancerBuilder) Build(info base.PickerBuildInfo) balancer.Picker {
 			subConn: conn,
 		})
 	}
+	b.builder = selector.GlobalSelector()
+	if b.builder == nil {
+		panic("globalSelector.Builder is nil, please use SetGlobalSelector() to configure globalSelector.Builder")
+	}
 	p := &balancerPicker{
 		selector: b.builder.Build(),
 	}
