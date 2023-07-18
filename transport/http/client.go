@@ -16,14 +16,14 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/registry"
 	"github.com/go-kratos/kratos/v2/selector"
-	"github.com/go-kratos/kratos/v2/selector/wrr"
+	_ "github.com/go-kratos/kratos/v2/selector/wrr"
 	"github.com/go-kratos/kratos/v2/transport"
 )
 
 func init() {
-	if selector.GlobalSelector() == nil {
-		selector.SetGlobalSelector(wrr.NewBuilder())
-	}
+	//if selector.GlobalSelector() == nil {
+	//	selector.SetGlobalSelector(wrr.NewBuilder())
+	//}
 }
 
 // DecodeErrorFunc is decode error func.
