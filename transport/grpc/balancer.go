@@ -1,6 +1,7 @@
 package grpc
 
 import (
+	"fmt"
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"
 	"google.golang.org/grpc/metadata"
@@ -20,6 +21,7 @@ var (
 )
 
 func init() {
+	fmt.Println("transport/grpc/balancer.go:init(): start")
 	b := base.NewBalancerBuilder(
 		balancerName,
 		&balancerBuilder{
@@ -27,6 +29,7 @@ func init() {
 		},
 		base.Config{HealthCheck: true},
 	)
+	fmt.Printf("transport/grpc/balancer.go:init(): b.builder.type: %v\n", selector.GlobalSelector())
 	balancer.Register(b)
 }
 

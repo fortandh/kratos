@@ -5,6 +5,7 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
+	"github.com/go-kratos/kratos/v2/selector/wrr"
 	"io"
 	"net/http"
 	"time"
@@ -16,13 +17,15 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/registry"
 	"github.com/go-kratos/kratos/v2/selector"
-	"github.com/go-kratos/kratos/v2/selector/wrr"
 	"github.com/go-kratos/kratos/v2/transport"
 )
 
 func init() {
+	fmt.Println("transport/http/client.go:init(): start")
 	if selector.GlobalSelector() == nil {
-		selector.SetGlobalSelector(wrr.NewBuilder())
+		httpBuilder := wrr.NewBuilder()
+		fmt.Printf("transport/http/client.go:init(): httpBuilder.type: %v\n", httpBuilder)
+		selector.SetGlobalSelector(httpBuilder)
 	}
 }
 

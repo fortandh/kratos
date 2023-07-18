@@ -24,8 +24,11 @@ import (
 )
 
 func init() {
+	fmt.Println("transport/grpc/client.go:init(): start")
 	if selector.GlobalSelector() == nil {
-		selector.SetGlobalSelector(wrr.NewBuilder())
+		grpcBuilder := wrr.NewBuilder()
+		fmt.Printf("transport/grpc/client.go:init(): grpcBuilder.type: %v\n", grpcBuilder)
+		selector.SetGlobalSelector(grpcBuilder)
 	}
 }
 

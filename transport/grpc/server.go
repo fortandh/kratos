@@ -3,6 +3,7 @@ package grpc
 import (
 	"context"
 	"crypto/tls"
+	"fmt"
 	"net"
 	"net/url"
 	"time"
@@ -137,6 +138,7 @@ type Server struct {
 
 // NewServer creates a gRPC server by options.
 func NewServer(opts ...ServerOption) *Server {
+	fmt.Println("transport/grpc/server.go:NewServer(): start")
 	srv := &Server{
 		baseCtx:    context.Background(),
 		network:    "tcp",

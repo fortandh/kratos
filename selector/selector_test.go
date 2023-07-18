@@ -3,6 +3,7 @@ package selector
 import (
 	"context"
 	"errors"
+	"fmt"
 	"math/rand"
 	"reflect"
 	"sync/atomic"
@@ -278,6 +279,7 @@ func TestNoPick(t *testing.T) {
 }
 
 func TestGlobalSelector(t *testing.T) {
+	fmt.Println("selector/selector_test.go:TestGlobalSelector(): start\")")
 	builder := DefaultBuilder{
 		Node:     &mockWeightedNodeBuilder{},
 		Balancer: &mockBalancerBuilder{},
